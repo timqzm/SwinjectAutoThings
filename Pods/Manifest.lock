@@ -1,21 +1,26 @@
 PODS:
   - Swinject (2.6.2)
+  - SwinjectAutoregistration (2.6.1):
+    - Swinject (~> 2.6)
   - SwinjectStoryboard (2.2.0):
     - Swinject (~> 2.6)
 
 DEPENDENCIES:
   - Swinject (~> 2.6.2)
+  - SwinjectAutoregistration
   - SwinjectStoryboard
 
 SPEC REPOS:
   trunk:
     - Swinject
+    - SwinjectAutoregistration
     - SwinjectStoryboard
 
 SPEC CHECKSUMS:
   Swinject: cf7458774b1b00323080a9c67e47a1ee7f9d2af1
+  SwinjectAutoregistration: d0de7e48db3601b8b130f2f84e5a8399e0224135
   SwinjectStoryboard: 32512ef16c2b0ff5b8f823b23539c4a50f6d3383
 
-PODFILE CHECKSUM: dd4667c0de1536c60f0e53d7daace14a114b6f26
+PODFILE CHECKSUM: bde6c15be618947912eac8bb0165202af384a764
 
 COCOAPODS: 1.8.4

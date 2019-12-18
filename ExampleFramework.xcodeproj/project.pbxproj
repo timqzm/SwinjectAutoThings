@@ -11,6 +11,9 @@
 		75086F0523AAB9C20012D7E0 /* ExampleFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 75086F0323AAB9C20012D7E0 /* ExampleFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		75086F0D23AABA340012D7E0 /* AutoStoryboardInitCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75086F0B23AABA340012D7E0 /* AutoStoryboardInitCompleted.swift */; };
 		75086F0E23AABA340012D7E0 /* AutoInitCompleted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75086F0C23AABA340012D7E0 /* AutoInitCompleted.swift */; };
+		75086F1023AACA870012D7E0 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 75086F0F23AACA870012D7E0 /* Storyboard.storyboard */; };
+		75086F1223AACAAD0012D7E0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75086F1123AACAAD0012D7E0 /* ViewController.swift */; };
+		75086F1423AACBF70012D7E0 /* Services.swift in Sources */ = {isa = PBXBuildFile; fileRef = 75086F1323AACBF70012D7E0 /* Services.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +23,9 @@
 		75086F0423AAB9C20012D7E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		75086F0B23AABA340012D7E0 /* AutoStoryboardInitCompleted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoStoryboardInitCompleted.swift; sourceTree = SOURCE_ROOT; };
 		75086F0C23AABA340012D7E0 /* AutoInitCompleted.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoInitCompleted.swift; sourceTree = SOURCE_ROOT; };
+		75086F0F23AACA870012D7E0 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
+		75086F1123AACAAD0012D7E0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		75086F1323AACBF70012D7E0 /* Services.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Services.swift; sourceTree = "<group>"; };
 		A59E25A7FCD648F92D76F4CE /* Pods-ExampleFramework.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleFramework.release.xcconfig"; path = "Target Support Files/Pods-ExampleFramework/Pods-ExampleFramework.release.xcconfig"; sourceTree = "<group>"; };
 		E00AB3B005A2241F7241E3FA /* Pods-ExampleFramework.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExampleFramework.debug.xcconfig"; path = "Target Support Files/Pods-ExampleFramework/Pods-ExampleFramework.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +75,9 @@
 				75086F0B23AABA340012D7E0 /* AutoStoryboardInitCompleted.swift */,
 				75086F0323AAB9C20012D7E0 /* ExampleFramework.h */,
 				75086F0423AAB9C20012D7E0 /* Info.plist */,
+				75086F0F23AACA870012D7E0 /* Storyboard.storyboard */,
+				75086F1123AACAAD0012D7E0 /* ViewController.swift */,
+				75086F1323AACBF70012D7E0 /* Services.swift */,
 			);
 			path = ExampleFramework;
 			sourceTree = "<group>";
@@ -153,6 +162,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75086F1023AACA870012D7E0 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +198,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				75086F1223AACAAD0012D7E0 /* ViewController.swift in Sources */,
+				75086F1423AACBF70012D7E0 /* Services.swift in Sources */,
 				75086F0E23AABA340012D7E0 /* AutoInitCompleted.swift in Sources */,
 				75086F0D23AABA340012D7E0 /* AutoStoryboardInitCompleted.swift in Sources */,
 			);

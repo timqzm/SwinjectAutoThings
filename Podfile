@@ -3,5 +3,6 @@ use_frameworks!
 
 pod 'Swinject', '~> 2.6.2'
 pod 'SwinjectStoryboard'
+pod 'SwinjectAutoregistration'
 
 target 'ExampleFramework'
