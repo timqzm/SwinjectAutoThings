@@ -18,23 +18,20 @@ public class Service: ServicingA, ServicingB, ServicingC, ServicingD {
 }
 
 // for CircularDependencies example
-public class ServiceA: ServicingA {
-
+//gistsnip:start:circular_dependency
+class ServiceA: ServicingA {
     private var serviceB: ServicingB?
 
-    public func inject(b: ServicingB) {
+    func inject(b: ServicingB) {
         serviceB = b
     }
-
-    public init() {}
 }
-public class ServiceB: ServicingB {
 
+public class ServiceB: ServicingB {
     private weak var serviceA: ServicingA?
 
-    public func inject(a: ServicingA) {
+    func inject(a: ServicingA) {
         serviceA = a
     }
-
-    public init() {}
 }
+//gistsnip:end:circular_dependency

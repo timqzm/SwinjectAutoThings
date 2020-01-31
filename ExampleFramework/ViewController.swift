@@ -8,17 +8,18 @@
 
 import UIKit
 
-public class ViewController: UIViewController {
-
+//gistsnip:start:ViewController2
+class ViewController2: UIViewController {
     private var serviceA: ServicingA?
     private var serviceB: ServicingB?
     private var serviceC: ServicingC?
 
-    public func inject(a: ServicingA,
-                       b: ServicingB,
-                       c: ServicingC) {
+    func inject(a: ServicingA,
+                b: ServicingB,
+                c: ServicingC) {
         serviceA = a
         serviceB = b
         serviceC = c
     }
 }
+//gistsnip:end:ViewController2
