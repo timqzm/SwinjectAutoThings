@@ -1,0 +1,18 @@
+import Swinject
+import SwinjectStoryboard
+
+public extension Container {
+    // swiftlint:disable force_unwrapping force_cast
+    {% set alphabet %}ABCDEFGHIJKLMNOPQRSTUVWXYZ{% endset %}
+    {% for i in 0...25 %}
+    {% set args %}{% for i in 0...i %}{{ alphabet[i] }}{% if not forloop.last %}, {% endif %}{% endfor %}{% endset %}
+    func autoStoryboardInitCompleted<Ser: Controller, {{ args }}>(_ service: Ser.Type, _ completion: @escaping (Ser) -> ({{ args }}) -> Void) {
+        storyboardInitCompleted(service.self) { res, con in
+            {% for i in 0...i %}let {{ alphabet[i]|lowerFirstLetter }} = res.resolve({{ alphabet[i] }}.self){% if not forloop.last %}; {% endif %}{% endfor %}
+            completion(con)({% for i in 0...i %}{{ alphabet[i]|lowerFirstLetter }}!{% if not forloop.last %}, {% endif %}{% endfor %})
+        }
+    }
+
+    {% endfor %}
+    // swiftlint:enable force_unwrapping force_cast
+}

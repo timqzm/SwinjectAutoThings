@@ -1,0 +1,6 @@
+sources:
+  - ExampleFramework
+templates:
+  - SourceryTemplates
+output:
+  AutoThings

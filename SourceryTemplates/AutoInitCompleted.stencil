@@ -1,0 +1,17 @@
+import Swinject
+
+public extension ServiceEntry {
+    // swiftlint:disable force_unwrapping force_cast
+    {% set alphabet %}ABCDEFGHIJKLMNOPQRSTUVWXYZ{% endset %}
+    {% for i in 0...25 %}
+    {% set args %}{% for i in 0...i %}{{ alphabet[i] }}{% if not forloop.last %}, {% endif %}{% endfor %}{% endset %}
+    func autoInitCompleted<Ser, {{ args }}>(_ completion: @escaping (Ser) -> ({{ args }}) -> Void) -> Self {
+        initCompleted { res, ser in
+            {% for i in 0...i %}let {{ alphabet[i]|lowerFirstLetter }} = res.resolve({{ alphabet[i] }}.self){% if not forloop.last %}; {% endif %}{% endfor %}
+            completion(ser as! Ser)({% for i in 0...i %}{{ alphabet[i]|lowerFirstLetter }}!{% if not forloop.last %}, {% endif %}{% endfor %})
+        }
+    }
+
+    {% endfor %}
+    // swiftlint:enable force_unwrapping force_cast
+}
