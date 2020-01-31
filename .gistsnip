@@ -1,0 +1,154 @@
+{
+    "Snippets": {
+        "AutoThings/AutoStoryboardInitCompleted.generated#auto_init_completed.swift": {
+            "GistID": "c9f01bdef9bcc7e69df0529fc93dbeb5",
+            "GistURL": "https://gist.github.com/c9f01bdef9bcc7e69df0529fc93dbeb5",
+            "Line": 9,
+            "File": "AutoThings/AutoStoryboardInitCompleted.generated.swift",
+            "Path": "AutoThings/AutoStoryboardInitCompleted.generated#auto_init_completed.swift",
+            "Name": "auto_init_completed",
+            "Content": "func autoStoryboardInitCompleted\u003cSer: Controller, A\u003e(_ service: Ser.Type, _ completion: @escaping (Ser) -\u003e (A) -\u003e Void) {\n    storyboardInitCompleted(service.self) { res, con in\n        let a = res.resolve(A.self)\n        completion(con)(a!)\n    }\n}\n\nfunc autoStoryboardInitCompleted\u003cSer: Controller, A, B\u003e(_ service: Ser.Type, _ completion: @escaping (Ser) -\u003e (A, B) -\u003e Void) {\n    storyboardInitCompleted(service.self) { res, con in\n        let a = res.resolve(A.self); let b = res.resolve(B.self)\n        completion(con)(a!, b!)\n    }\n}\n\nfunc autoStoryboardInitCompleted\u003cSer: Controller, A, B, C\u003e(_ service: Ser.Type, _ completion: @escaping (Ser) -\u003e (A, B, C) -\u003e Void) {\n    storyboardInitCompleted(service.self) { res, con in\n        let a = res.resolve(A.self); let b = res.resolve(B.self); let c = res.resolve(C.self)\n        completion(con)(a!, b!, c!)\n    }\n}",
+            "Description": "https://github.com/timqzm/SwinjectAutoThings https://github.com/timqzm/SwinjectAutoThings/blob/ab6a0cb12ec06894f0d8cf9e9ff7c079863baae7/AutoThings/AutoStoryboardInitCompleted.generated.swift#L9"
+        },
+        "Example.playground/Pages/CircularDependencies.xcplaygroundpage/Contents#circular_dependency_autoregister.swift": {
+            "GistID": "b0a4a76523b6e4efb388dc138db53390",
+            "GistURL": "https://gist.github.com/b0a4a76523b6e4efb388dc138db53390",
+            "Line": 6,
+            "File": "Example.playground/Pages/CircularDependencies.xcplaygroundpage/Contents.swift",
+            "Path": "Example.playground/Pages/CircularDependencies.xcplaygroundpage/Contents#circular_dependency_autoregister.swift",
+            "Name": "circular_dependency_autoregister",
+            "Content": "container.autoregister(ServicingA.self, initializer: ServiceA.init)\n    .autoInitCompleted(ServiceA.inject)\ncontainer.autoregister(ServicingB.self, initializer: ServiceB.init)\n    .autoInitCompleted(ServiceB.inject)\n\nlet a = container.resolve(ServicingA.self)!\nlet b = container.resolve(ServicingB.self)!",
+            "Description": "https://github.com/timqzm/SwinjectAutoThings https://github.com/timqzm/SwinjectAutoThings/blob/ab6a0cb12ec06894f0d8cf9e9ff7c079863baae7/Example.playground/Pages/CircularDependencies.xcplaygroundpage/Contents.swift#L6"
+        },
+        "ExampleFramework/Services#circular_dependency.swift": {
+            "GistID": "b8de2b26fef6b3d4ee37e4819699d3d6",
+            "GistURL": "https://gist.github.com/b8de2b26fef6b3d4ee37e4819699d3d6",
+            "Line": 21,
+            "File": "ExampleFramework/Services.swift",
+            "Path": "ExampleFramework/Services#circular_dependency.swift",
+            "Name": "circular_dependency",
+            "Content": "class ServiceA: ServicingA {\n    private var serviceB: ServicingB?\n\n    func inject(b: ServicingB) {\n        serviceB = b\n    }\n}\n\npublic class ServiceB: ServicingB {\n    private weak var serviceA: ServicingA?\n\n    func inject(a: ServicingA) {\n        serviceA = a\n    }\n}",
+            "Description": "https://github.com/timqzm/SwinjectAutoThings https://github.com/timqzm/SwinjectAutoThings/blob/ab6a0cb12ec06894f0d8cf9e9ff7c079863baae7/ExampleFramework/Services.swift#L21"
+        },
+        "ExampleFramework/Snippets#user_manager.swift": {
+            "GistID": "e58d1d0b2d4fd36c1370c6769bcbbc2f",
+            "GistURL": "https://gist.github.com/e58d1d0b2d4fd36c1370c6769bcbbc2f",
+            "Line": 18,
+            "File": "ExampleFramework/Snippets.swift",
+            "Path": "ExampleFramework/Snippets#user_manager.swift",
+            "Name": "user_manager",
+            "Content": "class UserManager: UserManagering {\n    let keychainService: KeychainServicing\n    let networkService: NetworkServicing\n    let storageService: StorageServicing\n\n    init(keychainServicing: KeychainServicing,\n         networkServicing: NetworkServicing,\n         storageServicing: StorageServicing) {\n        keychainService = keychainServicing\n        networkService = networkServicing\n        storageService = storageServicing\n    }\n}",
+            "Description": "https://github.com/timqzm/SwinjectAutoThings https://github.com/timqzm/SwinjectAutoThings/blob/ab6a0cb12ec06894f0d8cf9e9ff7c079863baae7/ExampleFramework/Snippets.swift#L18"
+        },
+        "ExampleFramework/Snippets#user_manager2.swift": {
+            "GistID": "b040fe3670aad8c431bf76f3b8cfdb58",
+            "GistURL": "https://gist.github.com/b040fe3670aad8c431bf76f3b8cfdb58",
+            "Line": 47,
+            "File": "ExampleFramework/Snippets.swift",
+            "Path": "ExampleFramework/Snippets#user_manager2.swift",
+            "Name": "user_manager2",
+            "Content": "class UserManager2: UserManagering {\n    var keychainService: KeychainServicing?\n    var storageService: StorageServicing?\n}",
+            "Description": "https://github.com/timqzm/SwinjectAutoThings https://github.com/timqzm/SwinjectAutoThings/blob/ab6a0cb12ec06894f0d8cf9e9ff7c079863baae7/ExampleFramework/Snippets.swift#L47"
+        },
+        "ExampleFramework/Snippets#user_manager2_manual_registration.swift": {
+            "GistID": "a9b20f2b21aca7eaa6452c8cef46d58a",
+            "GistURL": "https://gist.github.com/a9b20f2b21aca7eaa6452c8cef46d58a",
+            "Line": 85,
+            "File": "ExampleFramework/Snippets.swift",
+            "Path": "ExampleFramework/Snippets#user_manager2_manual_registration.swift",
+            "Name": "user_manager2_manual_registration",
+            "Content": "container.register(UserManagering.self) { r in\n    let userManager = UserManager2()\n    userManager.keychainService = r.resolve(KeychainServicing.self)\n    userManager.storageService = r.resolve(StorageServicing.self)\n    return userManager\n}",
+            "Description": "https://github.com/timqzm/SwinjectAutoThings https://github.com/timqzm/SwinjectAutoThings/blob/ab6a0cb12ec06894f0d8cf9e9ff7c079863baae7/ExampleFramework/Snippets.swift#L85"
+        },
+        "ExampleFramework/Snippets#user_manager_autoregistration.swift": {
+            "GistID": "6d5db6ccccafdfc591acccf866c81877",
+            "GistURL": "https://gist.github.com/6d5db6ccccafdfc591acccf866c81877",
+            "Line": 81,
+            "File": "ExampleFramework/Snippets.swift",
+            "Path": "ExampleFramework/Snippets#user_manager_autoregistration.swift",
+            "Name": "user_manager_autoregistration",
+            "Content": "container.autoregister(UserManagering.self, initializer: UserManager.init)",
+            "Description": "https://github.com/timqzm/SwinjectAutoThings https://github.com/timqzm/SwinjectAutoThings/blob/ab6a0cb12ec06894f0d8cf9e9ff7c079863baae7/ExampleFramework/Snippets.swift#L81"
+        },
+        "ExampleFramework/Snippets#user_manager_manual_registration.swift": {
+            "GistID": "ed8633ba287ace7be71bf719c228e3b9",
+            "GistURL": "https://gist.github.com/ed8633ba287ace7be71bf719c228e3b9",
+            "Line": 66,
+            "File": "ExampleFramework/Snippets.swift",
+            "Path": "ExampleFramework/Snippets#user_manager_manual_registration.swift",
+            "Name": "user_manager_manual_registration",
+            "Content": "container.register(UserManagering.self) { r in\n    UserManager(keychainServicing: r.resolve(KeychainServicing.self)!,\n                networkServicing: r.resolve(NetworkServicing.self)!,\n                storageServicing: r.resolve(StorageServicing.self)!)\n}",
+            "Description": "https://github.com/timqzm/SwinjectAutoThings https://github.com/timqzm/SwinjectAutoThings/blob/ab6a0cb12ec06894f0d8cf9e9ff7c079863baae7/ExampleFramework/Snippets.swift#L66"
+        },
+        "ExampleFramework/Snippets#user_manager_on_diet.swift": {
+            "GistID": "078806a64d17de91b0ec69b807872f42",
+            "GistURL": "https://gist.github.com/078806a64d17de91b0ec69b807872f42",
+            "Line": 34,
+            "File": "ExampleFramework/Snippets.swift",
+            "Path": "ExampleFramework/Snippets#user_manager_on_diet.swift",
+            "Name": "user_manager_on_diet",
+            "Content": "class UserManagerOnDiet: UserManagering {\n    let keychainService: KeychainServicing\n    let storageService: StorageServicing\n\n    init(keychainServicing: KeychainServicing,\n         storageServicing: StorageServicing) {\n        keychainService = keychainServicing\n        storageService = storageServicing\n    }\n}",
+            "Description": "https://github.com/timqzm/SwinjectAutoThings https://github.com/timqzm/SwinjectAutoThings/blob/ab6a0cb12ec06894f0d8cf9e9ff7c079863baae7/ExampleFramework/Snippets.swift#L34"
+        },
+        "ExampleFramework/Snippets#user_manager_on_diet_manual_registration.swift": {
+            "GistID": "5e5094f6a2ce949eac491bc174f5cdf5",
+            "GistURL": "https://gist.github.com/5e5094f6a2ce949eac491bc174f5cdf5",
+            "Line": 74,
+            "File": "ExampleFramework/Snippets.swift",
+            "Path": "ExampleFramework/Snippets#user_manager_on_diet_manual_registration.swift",
+            "Name": "user_manager_on_diet_manual_registration",
+            "Content": "container.register(UserManagering.self) { r in\n    UserManagerOnDiet(keychainServicing: r.resolve(KeychainServicing.self)!,\n                      storageServicing: r.resolve(StorageServicing.self)!)\n}",
+            "Description": "https://github.com/timqzm/SwinjectAutoThings https://github.com/timqzm/SwinjectAutoThings/blob/ab6a0cb12ec06894f0d8cf9e9ff7c079863baae7/ExampleFramework/Snippets.swift#L74"
+        },
+        "ExampleFramework/Snippets#view_controller.swift": {
+            "GistID": "2c50e82aed8f4e46a209fccfff5b0c69",
+            "GistURL": "https://gist.github.com/2c50e82aed8f4e46a209fccfff5b0c69",
+            "Line": 54,
+            "File": "ExampleFramework/Snippets.swift",
+            "Path": "ExampleFramework/Snippets#view_controller.swift",
+            "Name": "view_controller",
+            "Content": "class ViewController: UIViewController {\n    var serviceA: ServicingA?\n    var serviceB: ServicingB?\n    var serviceC: ServicingC?\n}",
+            "Description": "https://github.com/timqzm/SwinjectAutoThings https://github.com/timqzm/SwinjectAutoThings/blob/ab6a0cb12ec06894f0d8cf9e9ff7c079863baae7/ExampleFramework/Snippets.swift#L54"
+        },
+        "ExampleFramework/Snippets#view_controller2_autoregistration.swift": {
+            "GistID": "69fb654df236f2f10371d27bf5d0cc7a",
+            "GistURL": "https://gist.github.com/69fb654df236f2f10371d27bf5d0cc7a",
+            "Line": 102,
+            "File": "ExampleFramework/Snippets.swift",
+            "Path": "ExampleFramework/Snippets#view_controller2_autoregistration.swift",
+            "Name": "view_controller2_autoregistration",
+            "Content": "container.autoStoryboardInitCompleted(ViewController2.self, ViewController2.inject)",
+            "Description": "https://github.com/timqzm/SwinjectAutoThings https://github.com/timqzm/SwinjectAutoThings/blob/ab6a0cb12ec06894f0d8cf9e9ff7c079863baae7/ExampleFramework/Snippets.swift#L102"
+        },
+        "ExampleFramework/Snippets#view_controller_manual_registration.swift": {
+            "GistID": "90a06712ca9c12f5a56cb147af3de813",
+            "GistURL": "https://gist.github.com/90a06712ca9c12f5a56cb147af3de813",
+            "Line": 94,
+            "File": "ExampleFramework/Snippets.swift",
+            "Path": "ExampleFramework/Snippets#view_controller_manual_registration.swift",
+            "Name": "view_controller_manual_registration",
+            "Content": "container.storyboardInitCompleted(ViewController.self) { r, c in\n    c.serviceA = r.resolve(ServicingA.self)\n    c.serviceB = r.resolve(ServicingB.self)\n    c.serviceC = r.resolve(ServicingC.self)\n}",
+            "Description": "https://github.com/timqzm/SwinjectAutoThings https://github.com/timqzm/SwinjectAutoThings/blob/ab6a0cb12ec06894f0d8cf9e9ff7c079863baae7/ExampleFramework/Snippets.swift#L94"
+        },
+        "ExampleFramework/ViewController#view_controller2.swift": {
+            "GistID": "46ddd77a2940af0a7bd0b9603a724425",
+            "GistURL": "https://gist.github.com/46ddd77a2940af0a7bd0b9603a724425",
+            "Line": 11,
+            "File": "ExampleFramework/ViewController.swift",
+            "Path": "ExampleFramework/ViewController#view_controller2.swift",
+            "Name": "view_controller2",
+            "Content": "class ViewController2: UIViewController {\n    private var serviceA: ServicingA?\n    private var serviceB: ServicingB?\n    private var serviceC: ServicingC?\n\n    func inject(a: ServicingA,\n                b: ServicingB,\n                c: ServicingC) {\n        serviceA = a\n        serviceB = b\n        serviceC = c\n    }\n}",
+            "Description": "https://github.com/timqzm/SwinjectAutoThings https://github.com/timqzm/SwinjectAutoThings/blob/ab6a0cb12ec06894f0d8cf9e9ff7c079863baae7/ExampleFramework/ViewController.swift#L11"
+        },
+        "SourceryTemplates/AutoStoryboardInitCompleted#sourcery_template.stencil": {
+            "GistID": "1bbf23d4e1e95cb5325863b56dd94e79",
+            "GistURL": "https://gist.github.com/1bbf23d4e1e95cb5325863b56dd94e79",
+            "Line": 1,
+            "File": "SourceryTemplates/AutoStoryboardInitCompleted.stencil",
+            "Path": "SourceryTemplates/AutoStoryboardInitCompleted#sourcery_template.stencil",
+            "Name": "sourcery_template",
+            "Content": "import Swinject\nimport SwinjectStoryboard\n\npublic extension Container {\n    // swiftlint:disable force_unwrapping force_cast\n    {% set alphabet %}ABCDEFGHIJKLMNOPQRSTUVWXYZ{% endset %}\n    {% for i in 0...25 %}\n    {% set args %}{% for i in 0...i %}{{ alphabet[i] }}{% if not forloop.last %}, {% endif %}{% endfor %}{% endset %}\n    func autoStoryboardInitCompleted\u003cSer: Controller, {{ args }}\u003e(_ service: Ser.Type, _ completion: @escaping (Ser) -\u003e ({{ args }}) -\u003e Void) {\n        storyboardInitCompleted(service.self) { res, con in\n            {% for i in 0...i %}let {{ alphabet[i]|lowerFirstLetter }} = res.resolve({{ alphabet[i] }}.self){% if not forloop.last %}; {% endif %}{% endfor %}\n            completion(con)({% for i in 0...i %}{{ alphabet[i]|lowerFirstLetter }}!{% if not forloop.last %}, {% endif %}{% endfor %})\n        }\n    }\n\n    {% endfor %}\n    // swiftlint:enable force_unwrapping force_cast\n}",
+            "Description": "https://github.com/timqzm/SwinjectAutoThings https://github.com/timqzm/SwinjectAutoThings/blob/ab6a0cb12ec06894f0d8cf9e9ff7c079863baae7/SourceryTemplates/AutoStoryboardInitCompleted.stencil#L1"
+        }
+    }
+}

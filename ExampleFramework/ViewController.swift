@@ -8,7 +8,7 @@
 
 import UIKit
 
-//gistsnip:start:ViewController2
+//gistsnip:start:view_controller2
 class ViewController2: UIViewController {
     private var serviceA: ServicingA?
     private var serviceB: ServicingB?
@@ -22,4 +22,4 @@ class ViewController2: UIViewController {
         serviceC = c
     }
 }
-//gistsnip:end:ViewController2
+//gistsnip:end:view_controller2

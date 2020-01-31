@@ -15,85 +15,93 @@ protocol KeychainServicing {}
 protocol NetworkServicing {}
 protocol StorageServicing {}
 
-//gistsnip:start:UserManager
-//gistsnip:start:UserManager-on-diet
+//gistsnip:start:user_manager
 class UserManager: UserManagering {
     let keychainService: KeychainServicing
-    //gistsnip:end:UserManager-on-diet
     let networkService: NetworkServicing
-    //gistsnip:start:UserManager-on-diet
     let storageService: StorageServicing
 
     init(keychainServicing: KeychainServicing,
-         //gistsnip:end:UserManager-on-diet
          networkServicing: NetworkServicing,
-         //gistsnip:start:UserManager-on-diet
          storageServicing: StorageServicing) {
         keychainService = keychainServicing
-        //gistsnip:end:UserManager-on-diet
         networkService = networkServicing
-        //gistsnip:start:UserManager-on-diet
         storageService = storageServicing
     }
 }
-//gistsnip:end:UserManager
-//gistsnip:end:UserManager-on-diet
+//gistsnip:end:user_manager
 
-//gistsnip:start:UserManager2
+//gistsnip:start:user_manager_on_diet
+class UserManagerOnDiet: UserManagering {
+    let keychainService: KeychainServicing
+    let storageService: StorageServicing
+
+    init(keychainServicing: KeychainServicing,
+         storageServicing: StorageServicing) {
+        keychainService = keychainServicing
+        storageService = storageServicing
+    }
+}
+//gistsnip:end:user_manager_on_diet
+
+//gistsnip:start:user_manager2
 class UserManager2: UserManagering {
     var keychainService: KeychainServicing?
     var storageService: StorageServicing?
 }
-//gistsnip:end:UserManager2
+//gistsnip:end:user_manager2
 
-//gistsnip:start:ViewController
+//gistsnip:start:view_controller
 class ViewController: UIViewController {
     var serviceA: ServicingA?
     var serviceB: ServicingB?
     var serviceC: ServicingC?
 }
-//gistsnip:end:ViewController
+//gistsnip:end:view_controller
 
 
 let container = Container()
 func f() {
 
-//gistsnip:start:UserManager_manual_registration
-//gistsnip:start:UserManager-on-diet_manual_registration
+//gistsnip:start:user_manager_manual_registration
 container.register(UserManagering.self) { r in
     UserManager(keychainServicing: r.resolve(KeychainServicing.self)!,
-                //gistsnip:end:UserManager_manual_registration2
                 networkServicing: r.resolve(NetworkServicing.self)!,
-                //gistsnip:start:UserManager_manual_registration2
                 storageServicing: r.resolve(StorageServicing.self)!)
 }
-//gistsnip:end:UserManager_manual_registration
-//gistsnip:end:UserManager-on-diet_manual_registration
+//gistsnip:end:user_manager_manual_registration
 
-//gistsnip:start:UserManager_autoregistration
+//gistsnip:start:user_manager_on_diet_manual_registration
+container.register(UserManagering.self) { r in
+    UserManagerOnDiet(keychainServicing: r.resolve(KeychainServicing.self)!,
+                      storageServicing: r.resolve(StorageServicing.self)!)
+}
+//gistsnip:end:user_manager_on_diet_manual_registration
+
+//gistsnip:start:user_manager_autoregistration
 container.autoregister(UserManagering.self, initializer: UserManager.init)
-//gistsnip:start:UserManager_autoregistration
+//gistsnip:end:user_manager_autoregistration
 
-//gistsnip:start:UserManager2_manual_registration
+//gistsnip:start:user_manager2_manual_registration
 container.register(UserManagering.self) { r in
     let userManager = UserManager2()
     userManager.keychainService = r.resolve(KeychainServicing.self)
     userManager.storageService = r.resolve(StorageServicing.self)
     return userManager
 }
-//gistsnip:end:UserManager2_manual_registration
+//gistsnip:end:user_manager2_manual_registration
 
-//gistsnip:start:ViewController_manual_registration
+//gistsnip:start:view_controller_manual_registration
 container.storyboardInitCompleted(ViewController.self) { r, c in
     c.serviceA = r.resolve(ServicingA.self)
     c.serviceB = r.resolve(ServicingB.self)
     c.serviceC = r.resolve(ServicingC.self)
 }
-//gistsnip:end:ViewController_manual_registration
+//gistsnip:end:view_controller_manual_registration
 
-//gistsnip:start:ViewController2_autoregistration
+//gistsnip:start:view_controller2_autoregistration
 container.autoStoryboardInitCompleted(ViewController2.self, ViewController2.inject)
-//gistsnip:end:ViewController2_autoregistration
+//gistsnip:end:view_controller2_autoregistration
 
 }
 

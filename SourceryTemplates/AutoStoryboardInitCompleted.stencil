@@ -1,4 +1,4 @@
-//gistsnip:start:Sourcery_template
+//gistsnip:start:sourcery_template
 import Swinject
 import SwinjectStoryboard
 
@@ -17,4 +17,4 @@ public extension Container {
     {% endfor %}
     // swiftlint:enable force_unwrapping force_cast
 }
-//gistsnip:end:Sourcery_template
+//gistsnip:end:sourcery_template

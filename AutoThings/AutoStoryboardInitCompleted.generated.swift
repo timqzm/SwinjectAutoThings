@@ -6,7 +6,7 @@ import SwinjectStoryboard
 
 public extension Container {
     // swiftlint:disable force_unwrapping force_cast
-    //gistsnip:start:AutoInitCompleted
+//gistsnip:start:auto_init_completed
     func autoStoryboardInitCompleted<Ser: Controller, A>(_ service: Ser.Type, _ completion: @escaping (Ser) -> (A) -> Void) {
         storyboardInitCompleted(service.self) { res, con in
             let a = res.resolve(A.self)
@@ -27,7 +27,7 @@ public extension Container {
             completion(con)(a!, b!, c!)
         }
     }
-    //gistsnip:end:AutoInitCompleted
+//gistsnip:end:auto_init_completed
 
     func autoStoryboardInitCompleted<Ser: Controller, A, B, C, D>(_ service: Ser.Type, _ completion: @escaping (Ser) -> (A, B, C, D) -> Void) {
         storyboardInitCompleted(service.self) { res, con in
